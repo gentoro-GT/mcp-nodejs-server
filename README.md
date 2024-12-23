@@ -1,5 +1,7 @@
 # Gentoro MCP Server
 
+[![smithery badge](https://smithery.ai/badge/@gentoro/mcp-nodejs-server)](https://smithery.ai/server/@gentoro/mcp-nodejs-server)
+
 MCP Server for the Gentoro services, enabling Claude to interact with Gentoro bridges and all underlying capabilities.
 
 ## Tools
@@ -42,3 +44,10 @@ Add the following to your `claude_desktop_config.json`:
 }
 ```
 
+### Installing via Smithery
+
+To install Gentoro MCP NodeJS Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@gentoro/mcp-nodejs-server):
+
+```bash
+npx -y @smithery/cli install @gentoro/mcp-nodejs-server --client claude
+```
