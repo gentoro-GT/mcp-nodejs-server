@@ -1,0 +1,25 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - gentoroApiKey
+      - gentoroBridgeUid
+      - gentoroBaseUrl
+    properties:
+      gentoroApiKey:
+        type: string
+        description: The API key for the Gentoro service.
+      gentoroBridgeUid:
+        type: string
+        description: The unique identifier for the Gentoro bridge.
+      gentoroBaseUrl:
+        type: string
+        description: The base URL for Gentoro services.
+  commandFunction:
+    # A function that produces the CLI command to start the MCP on stdio.
+    |-
+    (config) => ({command: 'node', args: ['dist/index.js'], env: {GENTORO_API_KEY: config.gentoroApiKey, GENTORO_BRIDGE_UID: config.gentoroBridgeUid, GENTORO_BASE_URL: config.gentoroBaseUrl}})
