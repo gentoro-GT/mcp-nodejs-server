@@ -28,6 +28,14 @@ export class GentoroServer {
             bridgeUid: process.env.GENTORO_BRIDGE_UID || null,
             baseUrl: process.env.GENTORO_BASE_URL || null
         }
+
+        if( process.env.GENTORO_KEY != null &&  (this._config.apiKey == null || this._config.bridgeUid == null || this._config.baseUrl == null) ) {
+            var data: string[] = process.env.GENTORO_KEY.split("/");
+            this._config.apiKey = decodeURIComponent(data[0]);
+            this._config.bridgeUid = decodeURIComponent(data[1]);
+            this._config.baseUrl = decodeURIComponent(data[2]);
+        }
+
         this._transport = new HttpTransport(this._config);
     }
 
@@ -35,7 +43,7 @@ export class GentoroServer {
         const initializeResult: InitializeResult = await this.initialize();
         this._server = new Server({
             name: "gentoro-mcp-nodejs-server",
-            version: "0.0.1",
+            version: "0.0.7",
         }, {
             capabilities: initializeResult.capabilities,
         });

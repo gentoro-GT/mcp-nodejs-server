@@ -11,17 +11,19 @@ As this MCP server is fully integrated with Gentoro, the agents, tools and their
 ## Setup
 
 1. Create a Gentoro account
-Visit the [Gentoro](https://gentoro.com) website to request an account and start using Gentoro services.
+Visit the [Gentoro Playground](https://beta.gentoro.com) website to request an account and start using Gentoro services.
+
+Or download and install Gentoro locally, see the [installation guide](https://www.gentoro.com/docs/setup/download).
 
 2. Create a Gentoro API Key
-Once you have an account, create an API key to authenticate with the Gentoro services.
+To use this MCP Connector, you will need a Gentoro API Key. You can see the instruction on how to create one [here](https://www.gentoro.com/docs/sdk/gentoro_key).
 
 3. Define a Bridge
 Using Gentoro Studio, define your bridge with all the tools and data sources required.
 
-### Integrate Gentoro with Claude
+### Integrate Gentoro with Claude or other Agents using NodeJS
 
-Add the following to your `claude_desktop_config.json`:
+Add the following to your `config.json`:
 
 ```json
 {
@@ -41,4 +43,25 @@ Add the following to your `claude_desktop_config.json`:
     }
 }
 ```
+
+Alternatively, you can use the short version of Gentoro Key:
+
+```json
+{
+    "mcpServers": {
+        "gentoro": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@gentoro/mcp-nodejs-server"
+            ],
+            "env": {
+                "GENTORO_KEY": "<your api key>/<your bridge uid>/<url where gentoro is hosted>",
+            }
+        }
+    }
+}
+```
+
+These values are url safe, and can be properly generated at Gentoro Studio. 
 

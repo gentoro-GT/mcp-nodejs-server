@@ -14,6 +14,9 @@ export class HttpTransport implements Transport {
     constructor( config: SdkConfig) {
         this.axiosInstance = axios.create({
             baseURL: config.baseUrl + '/bornio/v1/agents/' + config.bridgeUid,
+            headers: {
+                'X-API-Key': config.apiKey,
+            }
         });
     }
 
