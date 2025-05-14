@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/gentoro-gt-mcp-nodejs-server-badge.png)](https://mseep.ai/app/gentoro-gt-mcp-nodejs-server)
+
 # Gentoro MCP Server
 
 MCP Server for the Gentoro services, enabling Claude to interact with Gentoro bridges and all underlying capabilities.
